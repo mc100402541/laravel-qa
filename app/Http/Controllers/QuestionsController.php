@@ -8,6 +8,9 @@ use App\Http\Requests\AskQuestionRequest;
 
 class QuestionsController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -76,11 +79,13 @@ class QuestionsController extends Controller
     public function edit(Question $question)
     {
         //
+        $this->authorize("update", $question);
+        return view('questions.edit', compact('question'));
         //$question = Question::findOrFail($id);
-        if(\Gate::allows('update-question', $question)){
-            return view('questions.edit', compact('question'));
-        }
-        abort(403, "Access denied");        
+        /** if(\Gate::allows('update-question', $question)){
+            **return view('questions.edit', compact('question'));
+        **}
+        **abort(403, "Access denied"); **/
     }
 
     /**
@@ -93,11 +98,12 @@ class QuestionsController extends Controller
     public function update(AskQuestionRequest $request, Question $question)
     {
         //
+        $this->authorise('update', $question);
         $question->update($request->only('title', 'body'));
-        if(\Gate::allows('update-question', $question)){
+        /**if(\Gate::allows('update-question', $question)){
             return redirect('/questions')->with('success', 'your question has been updated');
         }
-        abort(403, "Access denied");
+        abort(403, "Access denied"); */
     }
 
     /**
@@ -109,11 +115,12 @@ class QuestionsController extends Controller
     public function destroy(Question $question)
     {
         //
+        $this->authorise('delete', $question);
         $question->delete();
-        if(\Gate::allows('delete-question', $question)){
-            return redirect('\questions')->with('success', "Your question has been deleted.");
-        }
-        abort(403, "Access denied");
+        /** if(\Gate::allows('delete-question', $question)){
+           * return redirect('\questions')->with('success', "Your question has been deleted.");
+        *}
+        *abort(403, "Access denied");**/
 
     }
 }
