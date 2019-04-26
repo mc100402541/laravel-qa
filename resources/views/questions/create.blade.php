@@ -20,20 +20,20 @@
                         @csrf
                         <div class="form-group">
                             <label for="question-title">Question Title: </label>
-                            <input type="text" name="title" id="question-title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}"/>
+                            <input type="text" name="title" value="{{ old('title') }}" id="question-title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}"/>
 
                             @if ($errors->has('title'))
                                 <div class="invalid-feedback">
-                                    <strong>{{ $rrors->first('title') }}</strong>
+                                    <strong>{{ $errors->first('title') }}</strong>
                                 </div>
                             @endif
                         </div>
                         <div class="form-group">
                             <label for="question-body">Explain your Question: </label>
-                            <textarea name="body" id="question-body" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" rows="10"></textarea>
+                            <textarea name="body" id="question-body" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" rows="10">{{ old('body') }}</textarea>
                             @if ($errors->has('body'))
                                 <div class="invalid-feedback">
-                                    <strong>{{ $rrors->first('body') }}</strong>
+                                    <strong>{{ $errors->first('body') }}</strong>
                                 </div>
                             @endif
                         </div>
