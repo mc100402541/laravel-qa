@@ -48,4 +48,11 @@ class Question extends Model
     {
         return $this->hasMany(Answer::class);
     }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+        // $question->answers->count()
+        // foreach ($question->answers as $answer)
+    }
 }
