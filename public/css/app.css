@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -10738,10 +10738,10 @@ form.form-delete {
 
 .vote-controls a.favorite.favorited,
 .vote-controls a.favorite.favorited:hover {
-  color: #ffc107;
+  color: #ffed4a;
 }
 
 .vote-controls a.vote-accepted {
-  color: #28a745;
+  color: #38c172;
 }
 
